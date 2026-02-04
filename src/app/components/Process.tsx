@@ -32,21 +32,27 @@ export default function Process() {
     const [activeIndex, setActiveIndex] = useState(-1);
 
     const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end start"]
+        target: gridRef,
+        offset: ["start center", "end center"]
     });
 
     const scaleY = useSpring(scrollYProgress, {
-        stiffness: 60000,
-        damping: 6000,
+        stiffness: 400,
+        damping: 50,
         restDelta: 0.001
     });
 
+    // Check progress against estimated thresholds for each step
     useMotionValueEvent(scaleY, "change", (latest) => {
-        if (latest < 0.15) setActiveIndex(-1);
+        // With "start center", "end center" on the grid:
+        // 0% = Grid top is at center of screen
+        // 100% = Grid bottom is at center of screen
+        // The items are evenly spaced.
+
+        if (latest < 0.1) setActiveIndex(-1);
         else if (latest < 0.35) setActiveIndex(0);
-        else if (latest < 0.55) setActiveIndex(1);
-        else if (latest < 0.75) setActiveIndex(2);
+        else if (latest < 0.60) setActiveIndex(1);
+        else if (latest < 0.85) setActiveIndex(2);
         else setActiveIndex(3);
     });
 
