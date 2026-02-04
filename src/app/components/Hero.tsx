@@ -34,7 +34,7 @@ export default function Hero() {
                 {/* Value Proposition - Terminal Style */}
                 <div className="font-mono text-sm md:text-base text-neutral-400 max-w-2xl space-y-4">
                     <p className="border-l-2 border-green-500 pl-4 py-1">
-                        Développement d'infrastructures digitales robustes et d'interfaces métiers complexes.
+                        Développement d'infrastructures digitales robustes et d'interfaces complexes.
                     </p>
                     <div className="flex items-center gap-2 text-xs text-neutral-600">
                         <span>// STACK_TECHNIQUE</span>
@@ -42,7 +42,7 @@ export default function Hero() {
                     </div>
                     <div className="flex flex-wrap gap-2">
                         {['NEXT.JS', 'SUPABASE', 'TAILWIND', 'TYPESCRIPT'].map((tech) => (
-                            <span key={tech} className="px-2 py-1 bg-white/5 border border-white/10 text-xs text-neutral-300">
+                            <span key={tech} className="px-2 py-1 bg-black border border-white/10 text-xs text-neutral-300">
                                 {tech}
                             </span>
                         ))}

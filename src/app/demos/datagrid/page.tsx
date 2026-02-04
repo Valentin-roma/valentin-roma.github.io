@@ -9,7 +9,7 @@ export default function DataGridDemoPage() {
                 href="/"
                 className="fixed top-6 right-6 z-50 bg-black/80 text-white px-4 py-2 font-mono text-sm border border-neutral-700 hover:bg-neutral-800 transition-colors backdrop-blur-md"
             >
-                [ESC] RETOUR AU PORTFOLIO
+                [ESC] RETOUR
             </Link>
 
             {/* Conteneur Plein Écran pour la démo */}

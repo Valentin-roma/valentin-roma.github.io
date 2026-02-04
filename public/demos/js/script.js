@@ -102,18 +102,7 @@ function initForm() {
 }
 
 function setupEventListeners() {
-  // Demo Modal
-  const startDemoBtn = document.getElementById('btn-start-demo');
-  if (startDemoBtn) {
-    startDemoBtn.addEventListener('click', function () {
-      const modal = document.getElementById('demo-intro-modal');
-      if (modal) {
-        modal.style.opacity = '0';
-        modal.style.transition = 'opacity 0.3s ease';
-        setTimeout(() => modal.remove(), 300);
-      }
-    });
-  }
+  // Demo Modal listener removed
 
   // Number of rooms change
   document.getElementById('nb-chambres').addEventListener('input', updateRoomList);

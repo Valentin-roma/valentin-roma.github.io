@@ -19,16 +19,6 @@ export default function Contact() {
             name: 'LINKEDIN',
             url: 'https://www.linkedin.com/in/valentin-roy-mamer-07aa43310',
             icon: '→'
-        },
-        {
-            name: 'GITHUB',
-            url: 'https://github.com/valentinroymamer',
-            icon: '→'
-        },
-        {
-            name: 'MALT',
-            url: 'https://www.malt.fr/profile/valentinroymamer',
-            icon: '→'
         }
     ];
 
@@ -38,7 +28,7 @@ export default function Contact() {
                 {/* Section Header */}
                 <Reveal>
                     <h2 className="font-sans text-4xl md:text-5xl font-bold tracking-tight text-white mb-3">
-            COMMUNICATION
+                        COMMUNICATION
                     </h2>
                 </Reveal>
 
@@ -92,25 +82,51 @@ export default function Contact() {
                             </motion.button>
                         </div>
 
-                        {/* Social Links Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                        {/* Action Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                            {/* Project Inquiry */}
+                            <a
+                                href="mailto:valentin.roymamer@icloud.com?subject=Projet%20SaaS%20-%20Demande%20de%20devis"
+                                className="group relative flex flex-col p-6 border border-neutral-800 hover:border-green-500 transition-colors overflow-hidden"
+                            >
+                                <div className="absolute inset-0 bg-green-500/10 scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500"></div>
+                                <div className="relative z-10">
+                                    <h3 className="text-white font-bold mb-2 group-hover:text-green-400 transition-colors">LANCER UN PROJET</h3>
+                                    <p className="text-neutral-400 text-sm mb-6">Vous avez un cahier des charges ou une idée précise ?</p>
+                                    <span className="inline-flex items-center gap-2 text-xs font-mono text-green-500 uppercase tracking-widest">
+                                        DEMANDER UN DEVIS <span className="text-lg">→</span>
+                                    </span>
+                                </div>
+                            </a>
+
+                            {/* General Contact */}
+                            <a
+                                href="mailto:valentin.roymamer@icloud.com?subject=Prise%20de%20contact"
+                                className="group relative flex flex-col p-6 border border-neutral-800 hover:border-white transition-colors overflow-hidden"
+                            >
+                                <div className="absolute inset-0 bg-white/5 scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500"></div>
+                                <div className="relative z-10">
+                                    <h3 className="text-white font-bold mb-2">ÉCHANGER</h3>
+                                    <p className="text-neutral-400 text-sm mb-6">Une question technique ou une proposition de collaboration ?</p>
+                                    <span className="inline-flex items-center gap-2 text-xs font-mono text-white uppercase tracking-widest">
+                                        ENVOYER UN MESSAGE <span className="text-lg">→</span>
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+
+                        {/* Social Links Footer */}
+                        <div className="flex flex-col md:flex-row gap-4 border-t border-neutral-900 pt-8">
                             {socialLinks.map((link, index) => (
                                 <Reveal key={link.name} delay={0.3 + (index * 0.1)}>
                                     <a
                                         href={link.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="group relative flex items-center justify-between px-6 py-4 border border-neutral-800 hover:border-green-500 transition-all overflow-hidden"
+                                        className="font-mono text-xs text-neutral-500 hover:text-green-500 transition-colors uppercase tracking-wider flex items-center gap-2"
                                     >
-                                        {/* Background fill on hover */}
-                                        <div className="absolute inset-0 bg-green-500 -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-
-                                        <span className="relative z-10 font-mono text-sm font-bold text-white group-hover:text-black transition-colors">
-                                            {link.name}
-                                        </span>
-                                        <span className="relative z-10 font-mono text-neutral-600 group-hover:text-black transition-colors">
-                                            {link.icon}
-                                        </span>
+                                        {link.name} <span className="text-lg leading-none">↗</span>
                                     </a>
                                 </Reveal>
                             ))}

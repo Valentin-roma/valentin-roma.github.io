@@ -63,9 +63,9 @@ export default function Process() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-4xl md:text-5xl font-bold mb-24 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-neutral-500"
+                    className="font-sans text-4xl md:text-5xl font-bold tracking-tight text-white mb-3"
                 >
-                    Notre Processus
+                    PROCESSUS
                 </motion.h2>
 
                 <div ref={gridRef} className="relative grid grid-cols-1 gap-12 lg:gap-24">
@@ -116,7 +116,9 @@ function ProcessStep({ step, index, isActive }: { step: any, index: number, isAc
                     ? 'border-green-500/50 shadow-[0_0_30px_rgba(34,197,94,0.1)]'
                     : 'border-white/10 hover:border-green-500/50'
                     }`}>
-                    <span className="absolute -top-6 text-6xl font-bold text-white/5 font-mono select-none pointer-events-none">
+                    <span className={`absolute -top-6 text-6xl font-bold text-white/5 font-mono select-none pointer-events-none ${
+                        index % 2 === 0 ? 'lg:right-7' : 'lg:left-7'
+                    }`}>
                         {step.number}
                     </span>
                     <h3 className={`text-2xl font-bold mb-4 transition-colors duration-300 ${isActive ? 'text-green-400' : 'text-white group-hover:text-green-400'

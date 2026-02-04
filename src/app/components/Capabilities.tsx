@@ -4,13 +4,13 @@ export default function Capabilities() {
     const capabilities = [
         {
             id: 'MODULE_01',
-            title: 'DÉVELOPPEMENT SAAS',
-            description: 'Architecture scalable et sécurisée. Systèmes multi-tenants avec authentification avancée, gestion des données en temps réel, et intégrations API complexes.'
+            title: 'ARCHITECTURES SCALABLES & SAAS',
+            description: "Je construis des fondations solides capables d'accueillir des milliers d'utilisateurs sans ralentir."
         },
         {
             id: 'MODULE_02',
-            title: 'OUTILS MÉTIERS INTERNES',
-            description: 'Solutions sur mesure pour optimiser les processus. Dashboards interactifs, automatisation des workflows, et interfaces utilisateur adaptées aux besoins spécifiques.'
+            title: 'DIGITALISATION DE PROCESSUS',
+            description: "Vos fichiers Excel atteignent leurs limites ? Je crée le logiciel sur-mesure qui va remplacer vos tâches manuelles."
         },
         {
             id: 'MODULE_03',

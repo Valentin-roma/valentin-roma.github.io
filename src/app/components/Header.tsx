@@ -9,11 +9,11 @@ export default function Header() {
     const [activeSection, setActiveSection] = useState('hero');
 
     const sections = [
-        { id: 'hero', label: 'ACCUEIL' },
-        { id: 'capabilities', label: 'COMPETENCES' },
-        { id: 'process', label: 'PROCESSUS' },
-        { id: 'projects', label: 'PROJETS' },
-        { id: 'contact', label: 'CONTACT' },
+        { id: 'hero', label: '/ACCUEIL' },
+        { id: 'capabilities', label: '/COMPETENCES' },
+        { id: 'process', label: '/PROCESSUS' },
+        { id: 'projects', label: '/PROJETS' },
+        { id: 'contact', label: '/CONTACT' },
     ];
 
     useEffect(() => {
@@ -78,9 +78,9 @@ export default function Header() {
                                     key={section.id}
                                     href={`#${section.id}`}
                                     onClick={(e) => scrollToSection(section.id, e)}
-                                    className="px-4 py-2 font-mono text-xs text-neutral-400 hover:text-white transition-colors uppercase"
+                                    className="px-4 py-2 font-mono text-xs text-neutral-400 hover:text-green-500 transition-colors uppercase"
                                 >
-                                    /{section.label}
+                                    {section.label}
                                 </a>
                             ))}
                         </nav>
@@ -98,7 +98,7 @@ export default function Header() {
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
-                        className={`fixed top-1/2 right-6 -translate-y-1/2 z-50 bg-black/80 backdrop-blur-xl border border-white/10 overflow-hidden transition-all duration-300 ease-in-out flex flex-col justify-center ${isHovered
+                        className={`fixed top-1/2 right-6 -translate-y-1/2 z-50 bg-black/80 backdrop-blur-xl border border-white/10 overflow-hidden transition-[width,height,padding,border-radius] duration-300 ease-in-out flex flex-col justify-center ${isHovered
                             ? 'w-38 py-6 rounded-3xl gap-6 px-4' // EXPANDED
                             : 'w-12 py-6 rounded-full items-center gap-6 px-4' // COLLAPSED
                             }`}

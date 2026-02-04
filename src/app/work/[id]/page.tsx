@@ -32,13 +32,22 @@ export default function WorkDetail() {
                             <span className="font-mono text-xs text-green-500 mb-2 block tracking-widest">
                                 CASE_STUDY_00{project.id}
                             </span>
-                            <h1 className="text-4xl md:text-6xl font-bold tracking-tight uppercase">
-                                {project.title}
+                            <h1 className="text-4xl md:text-6xl font-black italic tracking-tighter uppercase leading-none">
+                                {project.title.split(' ').map((word, i) => (
+                                    <span key={i} className="text-white">
+                                        {word}{' '}
+                                    </span>
+                                ))}
                             </h1>
                         </div>
                         <div className="font-mono text-sm text-neutral-400 text-right">
-                            <p>{project.category}</p>
-                            <p className="text-xs mt-1 text-neutral-600">{project.status}</p>
+                            <p className="uppercase tracking-widest">{project.category}</p>
+                            <div className="inline-flex items-center gap-2 mt-2">
+                                <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                                <span className="text-[10px] text-green-500 font-bold uppercase tracking-tighter">
+                                    {project.status}
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -47,17 +56,17 @@ export default function WorkDetail() {
                     {/* Main Content (Challenge & Solution) */}
                     <div className="lg:col-span-2 space-y-16">
                         <section>
-                            <h2 className="font-mono text-xs text-neutral-500 mb-6 tracking-widest border-l-2 border-red-500 pl-4">
-                                // LE_DÉFI
+                            <h2 className="font-mono text-lg text-red-500 mb-6 tracking-widest  uppercase">
+                                // Le Défi
                             </h2>
-                            <p className="text-xl md:text-2xl leading-relaxed text-neutral-200 font-light">
+                            <p className="text-lg md:text-lg leading-relaxed text-neutral-200 font-light">
                                 {project.challenge}
                             </p>
                         </section>
 
                         <section>
-                            <h2 className="font-mono text-xs text-neutral-500 mb-6 tracking-widest border-l-2 border-green-500 pl-4">
-                                // LA_SOLUTION
+                            <h2 className="font-mono text-lg text-green-500 mb-6 tracking-widest uppercase">
+                                // La Solution
                             </h2>
                             <p className="text-lg leading-relaxed text-neutral-300">
                                 {project.solution}
@@ -77,21 +86,37 @@ export default function WorkDetail() {
 
                     {/* Sidebar (Stack & Actions) */}
                     <div className="space-y-12">
-                        {/* Stack */}
-                        <div className="bg-neutral-900/50 border border-white/10 p-6 rounded-xl">
-                            <h3 className="font-mono text-xs text-neutral-500 mb-6 flex items-center gap-2">
-                                <span className="w-2 h-2 bg-neutral-700 animate-pulse"></span>
-                                TECH_STACK
-                            </h3>
-                            <div className="space-y-3">
-                                {project.stackDetails.map((tech, i) => (
-                                    <div key={i} className="flex items-center justify-between border-b border-white/5 pb-2 last:border-0 last:pb-0 group">
-                                        <span className="font-mono text-sm text-neutral-300 group-hover:text-white transition-colors">
-                                            {tech}
-                                        </span>
-                                        <span className="text-[10px] text-neutral-600 font-mono">OK</span>
-                                    </div>
-                                ))}
+                        {/* Terminal Tech Stack */}
+                        <div className="bg-[#0a0a0a] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
+                            <div className="bg-[#1a1a1a] px-4 py-2 border-b border-white/5 flex items-center justify-between">
+                                <div className="flex gap-1.5">
+                                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/30"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/30"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/30"></div>
+                                </div>
+                                <span className="font-mono text-[10px] text-neutral-500 uppercase">STACK_TECHNIQUE</span>
+                            </div>
+                            <div className="p-6">
+                                <div className="space-y-4">
+                                    {project.stackDetails.map((tech, i) => (
+                                        <div key={i} className="group">
+                                            <div className="flex items-center justify-between mb-2">
+                                                <span className="font-mono text-xs text-neutral-300 group-hover:text-green-400 transition-colors">
+                                                    {tech}
+                                                </span>
+                                                <span className="text-[9px] text-neutral-600 font-mono italic">COMPLETE</span>
+                                            </div>
+                                            <div className="h-[2px] w-full bg-neutral-900 overflow-hidden">
+                                                <motion.div
+                                                    initial={{ width: 0 }}
+                                                    whileInView={{ width: "100%" }}
+                                                    transition={{ duration: 1, delay: i * 0.1 }}
+                                                    className="h-full bg-green-500/30"
+                                                ></motion.div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
 
@@ -99,20 +124,27 @@ export default function WorkDetail() {
                         <div className="space-y-4 sticky top-32">
                             <Link
                                 href={project.demoLink}
-                                className="group block w-full bg-green-600 hover:bg-green-500 text-black font-bold py-4 px-6 text-center transition-all hover:scale-[1.02] active:scale-[0.98]"
+                                className="group relative block w-full bg-white text-black py-4 px-6 text-center transition-all overflow-hidden"
                             >
-                                <span className="font-mono tracking-wider flex items-center justify-center gap-3">
+                                <div className="absolute inset-0 bg-green-500 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out"></div>
+                                <span className="relative font-mono font-bold tracking-widest flex items-center justify-center gap-3 text-black z-10">
                                     LANCER_LA_DÉMO
                                     <span className="group-hover:translate-x-1 transition-transform">→</span>
                                 </span>
                             </Link>
-                            <p className="font-mono text-[10px] text-neutral-500 text-center">
+                            <p className="font-mono text-[10px] text-neutral-500 text-center uppercase tracking-tighter">
                                 * Environnement sécurisé (Sandboxed Mode)
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <style jsx>{`
+                .stroke-text {
+                    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+                }
+            `}</style>
         </div>
     );
 }

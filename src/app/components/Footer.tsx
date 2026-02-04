@@ -20,32 +20,6 @@ export default function Footer() {
                             <span>{new Date().getFullYear()}</span>
                         </div>
                     </div>
-
-                    {/* Right: Social Links - Command Style */}
-                    <div className="flex flex-col md:flex-row items-start md:items-center gap-4 font-mono text-xs">
-                        <a
-                            href="https://github.com/valentinroymamer"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-neutral-400 hover:text-green-500 hover:underline decoration-green-500 transition-all"
-                        >
-                            $ github --profile
-                        </a>
-                        <a
-                            href="https://linkedin.com/in/valentin-roy-mamer"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-neutral-400 hover:text-green-500 hover:underline decoration-green-500 transition-all"
-                        >
-                            $ linkedin --connect
-                        </a>
-                        <a
-                            href="mailto:valentin.roymamer@icloud.com"
-                            className="text-neutral-400 hover:text-green-500 hover:underline decoration-green-500 transition-all"
-                        >
-                            $ email --send
-                        </a>
-                    </div>
                 </div>
 
                 {/* Bottom: Copyright */}

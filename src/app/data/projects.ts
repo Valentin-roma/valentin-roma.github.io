@@ -16,22 +16,33 @@ export const projects: Project[] = [
     {
         id: "001",
         slug: "invoice",
-        title: "SYSTÈME DE FACTURATION",
-        category: "HOTEL INVOICING",
+        title: "LOGICIEL DE FACTURATION",
+        category: "FINANCIAL SAAS",
         tech: "REACT / FIREBASE",
         status: "PRODUCTION",
         demoLink: "/demos/invoice",
-        challenge: "Le client, un hôtel indépendant, perdait environ 4 heures par semaine à gérer manuellement ses factures sur Excel. Les erreurs de calcul étaient fréquentes et le suivi des impayés inexistant.",
-        solution: "Développement d'une application web progressive (PWA) permettant la génération automatique de factures PDF, le calcul de la TVA et des taxes de séjour, ainsi qu'un tableau de bord de suivi du chiffre d'affaires.",
+        challenge: "Un établissement hôtelier perdait plusieurs heures par semaine en gestion administrative manuelle. L'absence de centralisation entraînait des erreurs de TVA, des oublis de taxes de séjour et une visibilité floue sur la trésorerie.",
+        solution: "Développement d'une solution sur-mesure de facturation automatisée. Le système gère l'édition de PDF, le calcul complexe des taxes et offre un dashboard analytique en temps réel pour le suivi du chiffre d'affaires.",
         stackDetails: [
-            "REACT", "TYPESCRIPT", "TAILWIND CSS", "HTML2PDF.JS", "RECHARTS"
+            "React (Hooks & Context)",
+            "Firebase SDK",
+            "html2pdf.js (Génération PDF)",
+            "Recharts (Data Viz)",
+            "Technical CSS Framework",
+            "Vanilla JS Business Logic",
+            "Responsive Engine"
         ],
         features: [
-            "Génération PDF instantanée",
-            "Calcul automatique TVA/Taxes",
-            "Gestion base clients",
-            "Dashboard CA & Statistiques",
-            "Mode Offline (PWA)"
+            "Édition de Factures (PDF instantané)",
+            "Calcul Automatique (TVA & Taxes de séjour)",
+            "Base de Données Clients centralisée",
+            "Dashboard Analytique (CA & Statistiques)",
+            "Gestion des Collaborateurs",
+            "Historique & Archivage sécurisé",
+            "Panneau de Réglages (Tarifs & Devises)",
+            "Export de Données (CSV / Excel)",
+            "Multi-utilisateurs & Rôles",
+            "Design Système 'Technical' Ultra-léger"
         ]
     },
     {
@@ -45,14 +56,32 @@ export const projects: Project[] = [
         challenge: "Une association d'alphabétisation gérait 200+ bénéficiaires avec des fiches papier. La coordination entre les 5 enseignants était chaotique et aucune statistique fiable n'était disponible pour les financeurs.",
         solution: "Mise en place d'une plateforme SaaS multi-utilisateurs centralisant les dossiers élèves, les présences et les évaluations. Système de rôles (Admin/Enseignant/Financeur) pour sécuriser l'accès aux données sensibles.",
         stackDetails: [
-            "NEXT.JS", "SUPABASE (Auth/DB)", "REACT-QUERY"
+            "React 19 & TypeScript",
+            "Vite",
+            "Supabase (PostgreSQL / Auth / RLS)",
+            "Zustand",
+            "Context API",
+            "Framer Motion",
+            "Vanilla CSS",
+            "Lenis",
+            "Lucide React",
+            "@react-pdf/renderer",
+            "qrcode.react",
+            "React Helmet Async",
+            "Cloudflare Turnstile"
         ],
         features: [
-            "Base de données temps réel",
-            "Système de présence QR Code",
-            "Tableaux de données filtrables",
-            "Gestion des rôles & permissions",
-            "Exports Excel automatisés"
+            "Site Vitrine & Information (Mission, Formation, Blog, Contact)",
+            "Suivi des Bénéficiaires (Profils, Groupes, Archivage)",
+            "Gestion des Présences (Appel temps réel, Historique)",
+            "Pédagogie & Évaluations (Auto-moyennes, Bulletins)",
+            "Planning & Calendrier des sessions",
+            "Espace Partenaire dédié",
+            "Statistiques & Indicateurs clés (Indicateurs CA/Heures)",
+            "Accès Sécurisé (Codes simplifiés / Auth classique)",
+            "Portails Publics (QR Codes résultats)",
+            "Simulateurs Métiers intégrés",
+            "Administration multi-rôles complète"
         ]
     }
 ];
