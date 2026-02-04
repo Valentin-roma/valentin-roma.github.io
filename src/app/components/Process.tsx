@@ -42,7 +42,6 @@ export default function Process() {
         restDelta: 0.001
     });
 
-    // Check progress against estimated thresholds for each step
     useMotionValueEvent(scaleY, "change", (latest) => {
         if (latest < 0.1) setActiveIndex(-1);
         else if (latest < 0.35) setActiveIndex(0);
@@ -64,10 +63,7 @@ export default function Process() {
                 </motion.h2>
 
                 <div ref={gridRef} className="relative grid grid-cols-1 gap-12 lg:gap-24">
-                    {/* Vertical Timeline Line */}
                     <div className="absolute left-[20px] top-0 bottom-0 w-[2px] bg-white/10 hidden md:block lg:left-1/2 lg:-translate-x-1/2" />
-
-                    {/* Progress Line */}
                     <motion.div
                         style={{ scaleY, transformOrigin: 'top' }}
                         className="absolute left-[20px] top-0 bottom-0 w-[2px] bg-green-500 hidden md:block lg:left-1/2 lg:-translate-x-1/2"
@@ -92,23 +88,13 @@ function ProcessStep({ step, index, activeIndex }: { step: any, index: number, a
     const isGlobalActive = index <= activeIndex;
     const [isMobileActive, setIsMobileActive] = useState(false);
 
-    // Mobile specific: Activate when card is EXACTLY in center of screen
     const { scrollYProgress } = useScroll({
         target: ref,
-        offset: ["center center", "center center"] // Hit only when center aligns with center
+        offset: ["center center", "center center"]
     });
 
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
-        // Since the offset range is effectively 0 size (center to center), 
-        // Framer Motion might give values around 0-1 as it passes through.
-        // However, a better approach for "at center" highlight is "start end" to "end start" 
-        // and checking if it's currently roughly in the middle.
-        // A simpler robust way for mobile "center highlight" is to use a range like:
-        // "start 60%" to "end 40%" (enters closely before center, leaves closely after)
     });
-
-    // Actually, let's just use whileInView with a narrow margin for mobile
-    // This is cleaner than managing complex scroll listeners manually per item.
 
     return (
         <motion.div
@@ -116,13 +102,10 @@ function ProcessStep({ step, index, activeIndex }: { step: any, index: number, a
             className={`relative flex flex-col md:flex-row gap-8 lg:gap-16 group ${index % 2 === 0 ? 'lg:flex-row-reverse' : ''}`}
             onViewportEnter={() => setIsMobileActive(true)}
             onViewportLeave={() => setIsMobileActive(false)}
-            viewport={{ margin: "-45% 0px -45% 0px" }} // Triggers only when the element is in the middle 10% of the screen
+            viewport={{ margin: "-45% 0px -45% 0px" }}
         >
-            {/* Timeline Dot (Mobile) */}
             <div className={`absolute left-[11px] top-0 w-4 h-4 rounded-full border-2 bg-black z-10 md:hidden transition-colors duration-500 ${isMobileActive ? 'border-green-500 bg-green-500' : 'border-green-500'
                 }`} />
-
-            {/* Timeline Dot (Desktop) */}
             <div className={`hidden md:absolute md:left-[13px] lg:left-1/2 lg:-translate-x-1/2 top-8 w-4 h-4 rounded-full border-2 bg-black z-10 transition-all duration-500 ${isGlobalActive
                 ? 'border-green-500 bg-green-500 shadow-[0_0_15px_rgba(34,197,94,0.6)] scale-125'
                 : 'border-green-500 group-hover:bg-green-500'
@@ -135,11 +118,9 @@ function ProcessStep({ step, index, activeIndex }: { step: any, index: number, a
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className={`flex-1 pl-12 md:pl-12 lg:pl-0 ${index % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}`}
             >
-                <div className={`relative p-8 rounded-2xl bg-white/5 border transition-all duration-500 ${
-                    // Desktop uses global active, Mobile uses local viewport active
-                    (typeof window !== 'undefined' && window.innerWidth < 768 ? isMobileActive : isGlobalActive)
-                        ? 'border-green-500/50 shadow-[0_0_30px_rgba(34,197,94,0.1)]'
-                        : 'border-white/10 hover:border-green-500/50'
+                <div className={`relative p-8 rounded-2xl bg-white/5 border transition-all duration-500 ${(typeof window !== 'undefined' && window.innerWidth < 768 ? isMobileActive : isGlobalActive)
+                    ? 'border-green-500/50 shadow-[0_0_30px_rgba(34,197,94,0.1)]'
+                    : 'border-white/10 hover:border-green-500/50'
                     }`}>
                     <span className={`absolute -top-6 text-6xl font-bold text-white/5 font-mono select-none pointer-events-none ${index % 2 === 0 ? 'lg:right-7' : 'lg:left-7'
                         }`}>

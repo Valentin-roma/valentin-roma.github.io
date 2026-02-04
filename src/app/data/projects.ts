@@ -1,6 +1,6 @@
 export interface Project {
     id: string;
-    slug: string; // URL friendly ID: 'invoice', 'datagrid'
+    slug: string;
     title: string;
     category: string;
     tech: string;
@@ -8,7 +8,7 @@ export interface Project {
     demoLink: string;
     challenge: string;
     solution: string;
-    stackDetails: string[]; // List of specific technologies
+    stackDetails: string[];
     features: string[];
 }
 

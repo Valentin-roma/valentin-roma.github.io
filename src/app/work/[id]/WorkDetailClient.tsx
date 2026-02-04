@@ -6,17 +6,14 @@ import { motion } from 'framer-motion';
 import { Project } from '@/app/data/projects';
 
 export default function WorkDetailClient({ project }: { project: Project }) {
-    // Scroll instantanément en haut AVANT le rendu visuel
     useLayoutEffect(() => {
         window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }, []);
     return (
         <div className="min-h-screen bg-black text-white selection:bg-green-500/30 selection:text-green-500 pb-24">
-            {/* Background Grid */}
             <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
 
             <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-12 relative z-10">
-                {/* Header */}
                 <div className="mb-16 border-b border-white/10 pb-8">
                     <a
                         href="/#projects"
@@ -55,7 +52,6 @@ export default function WorkDetailClient({ project }: { project: Project }) {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-24">
-                    {/* Main Content (Challenge & Solution) */}
                     <div className="lg:col-span-2 space-y-16">
                         <section>
                             <h2 className="font-mono text-lg text-red-500 mb-6 tracking-widest  uppercase">
@@ -74,7 +70,6 @@ export default function WorkDetailClient({ project }: { project: Project }) {
                                 {project.solution}
                             </p>
 
-                            {/* Key Features List */}
                             <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {project.features.map((feature, i) => (
                                     <div key={i} className="flex items-center gap-3 bg-neutral-900 p-3 rounded border border-white/5">
@@ -86,9 +81,7 @@ export default function WorkDetailClient({ project }: { project: Project }) {
                         </section>
                     </div>
 
-                    {/* Sidebar (Stack & Actions) */}
                     <div className="space-y-12">
-                        {/* Terminal Tech Stack */}
                         <div className="bg-[#0a0a0a] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
                             <div className="bg-[#1a1a1a] px-4 py-2 border-b border-white/5 flex items-center justify-between">
                                 <div className="flex gap-1.5">
@@ -122,7 +115,6 @@ export default function WorkDetailClient({ project }: { project: Project }) {
                             </div>
                         </div>
 
-                        {/* CTA */}
                         <div className="space-y-4 sticky top-32">
                             <Link
                                 href={project.demoLink}

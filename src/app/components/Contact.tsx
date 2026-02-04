@@ -19,7 +19,6 @@ export default function Contact() {
                     console.error('Failed to copy text: ', err);
                 });
         } else {
-            // Fallback for older browsers or insecure contexts
             try {
                 const textArea = document.createElement("textarea");
                 textArea.value = email;
@@ -46,18 +45,15 @@ export default function Contact() {
     return (
         <section className="py-24 px-6 bg-neutral-950 border-t border-b border-neutral-800" id="contact">
             <div className="max-w-7xl mx-auto">
-                {/* Section Header */}
                 <Reveal>
                     <h2 className="font-sans text-4xl md:text-5xl font-bold tracking-tight text-white mb-12">
                         COMMUNICATION
                     </h2>
                 </Reveal>
 
-                {/* Central Terminal Card */}
                 <Reveal delay={0.2}>
                     <div className="border border-neutral-800 bg-black/50 p-8 md:p-12 max-w-4xl mx-auto">
 
-                        {/* Status Indicator */}
                         <div className="flex items-center gap-3 mb-8">
                             <span className="font-mono text-xs text-neutral-500 uppercase tracking-wider">
                                 STATUS:
@@ -70,7 +66,6 @@ export default function Contact() {
                             </div>
                         </div>
 
-                        {/* Email Display */}
                         <div className="mb-12">
                             <motion.button
                                 onClick={handleCopyEmail}
@@ -104,9 +99,7 @@ export default function Contact() {
                         </div>
 
 
-                        {/* Action Grid */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                            {/* Project Inquiry */}
                             <TerminalButton
                                 href="mailto:valentin.roymamer@icloud.com?subject=Projet%20SaaS%20-%20Demande%20de%20devis"
                                 title="LANCER UN PROJET"
@@ -115,7 +108,6 @@ export default function Contact() {
                                 theme="green"
                             />
 
-                            {/* General Contact */}
                             <TerminalButton
                                 href="mailto:valentin.roymamer@icloud.com?subject=Prise%20de%20contact"
                                 title="ÉCHANGER"
@@ -125,7 +117,6 @@ export default function Contact() {
                             />
                         </div>
 
-                        {/* Social Links Footer */}
                         <div className="flex flex-col md:flex-row gap-4 border-t border-neutral-900 pt-8">
                             {socialLinks.map((link, index) => (
                                 <Reveal key={link.name} delay={0.3 + (index * 0.1)}>
@@ -150,7 +141,6 @@ export default function Contact() {
 function TerminalButton({ href, title, description, command, theme = 'green' }: { href: string, title: string, description: string, command: string, theme?: 'green' | 'white' }) {
     const [isHovered, setIsHovered] = useState(false);
 
-    // Theme colors
     const activeColor = theme === 'green' ? 'text-green-500' : 'text-white';
     const borderColor = theme === 'green' ? 'group-hover:border-green-500' : 'group-hover:border-white';
     const bgColor = theme === 'green' ? 'bg-green-500/10' : 'bg-white/5';
@@ -188,7 +178,7 @@ const Typewriter = ({ text, speed = 30 }: { text: string, speed?: number }) => {
     const [displayedText, setDisplayedText] = useState('');
 
     useEffect(() => {
-        setDisplayedText(''); // Reset on text change or remount
+        setDisplayedText('');
         let i = 0;
         const interval = setInterval(() => {
             if (i < text.length) {

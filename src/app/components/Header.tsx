@@ -20,7 +20,6 @@ export default function Header() {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 100);
 
-            // Simple active section detection based on scroll position + offset
             const scrollPosition = window.scrollY + window.innerHeight / 3;
 
             for (const section of sections) {
@@ -38,11 +37,10 @@ export default function Header() {
         };
 
         window.addEventListener('scroll', handleScroll);
-        handleScroll(); // Check on mount
+        handleScroll();
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Prevent scroll when mobile menu is open
     useEffect(() => {
         if (isHovered) {
             document.body.style.overflow = 'hidden';
@@ -79,15 +77,13 @@ export default function Header() {
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="hidden md:fixed top-6 left-1/2 md:-translate-x-1/2 w-[90%] max-w-5xl h-14 rounded-xl px-6 md:flex items-center justify-between z-50 bg-black/80 backdrop-blur-xl border border-white/10 overflow-hidden"
                     >
-                        {/* Logo */}
                         <div className="flex items-center gap-2">
                             <span className="font-mono text-sm font-bold text-white">VALENTIN_RM</span>
                             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
                         </div>
 
-                        {/* Nav Links */}
                         <nav className="flex items-center gap-1">
-                            {sections.slice(1).map((section) => ( // Skip Home for navbar if desired, or keep all. Logic below replicates original explicit links
+                            {sections.slice(1).map((section) => (
                                 <a
                                     key={section.id}
                                     href={`#${section.id}`}
@@ -102,8 +98,6 @@ export default function Header() {
                 )}
             </AnimatePresence>
 
-
-            {/* Mobile Header - Always Visible */}
             <motion.header
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -111,7 +105,6 @@ export default function Header() {
                 className="md:hidden fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-xl border-b border-white/10"
             >
                 <div className="flex items-center justify-between px-4 h-16">
-                    {/* Logo */}
                     <div className="flex items-center gap-3">
                         <div className="w-8 h-8 border border-green-500/30 bg-green-500/10 flex items-center justify-center">
                             <span className="font-mono text-xs font-bold text-green-500">VR</span>
@@ -122,7 +115,6 @@ export default function Header() {
                         </div>
                     </div>
 
-                    {/* Burger Menu */}
                     <button
                         onClick={() => setIsHovered(!isHovered)}
                         className="relative w-10 h-10 flex items-center justify-center border border-white/10 bg-neutral-900 hover:border-green-500/50 transition-colors"
@@ -145,7 +137,6 @@ export default function Header() {
                 </div>
             </motion.header>
 
-            {/* Mobile Full Screen Menu */}
             <AnimatePresence>
                 {isHovered && (
                     <motion.div
@@ -156,7 +147,6 @@ export default function Header() {
                         className="md:hidden fixed inset-0 z-40 bg-black/98 backdrop-blur-2xl"
                     >
                         <div className="flex flex-col items-center justify-center h-full px-6">
-                            {/* Menu Items */}
                             <nav className="flex flex-col gap-6 w-full max-w-md">
                                 {sections.map((section, index) => (
                                     <motion.div
@@ -197,7 +187,6 @@ export default function Header() {
                                 ))}
                             </nav>
 
-                            {/* Footer Info */}
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -228,8 +217,8 @@ export default function Header() {
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
                         className={`hidden md:flex fixed top-1/2 right-6 -translate-y-1/2 z-50 bg-black/80 backdrop-blur-xl border border-white/10 overflow-hidden transition-[width,height,padding,border-radius] duration-300 ease-in-out flex-col justify-center ${isHovered
-                            ? 'w-38 py-6 rounded-3xl gap-6 px-4' // EXPANDED
-                            : 'w-12 py-6 rounded-full items-center gap-6 px-4' // COLLAPSED
+                            ? 'w-38 py-6 rounded-3xl gap-6 px-4'
+                            : 'w-12 py-6 rounded-full items-center gap-6 px-4'
                             }`}
                     >
                         {sections.map((section) => (
@@ -238,7 +227,6 @@ export default function Header() {
                                 className="relative group cursor-pointer flex gap-3 w-full justify-center"
                                 onClick={(e) => scrollToSection(section.id, e as any)}
                             >
-                                {/* Label (Visible on Hover of Navbar) */}
                                 <AnimatePresence>
                                     {isHovered && (
                                         <motion.span
@@ -256,7 +244,6 @@ export default function Header() {
                                     )}
                                 </AnimatePresence>
 
-                                {/* Active Indicator (Large Green Dot) vs Inactive (Small Grey Dot) */}
                                 <motion.div
                                     layout
                                     className={`rounded-full transition-all duration-300 flex-shrink-0  ${isHovered ? 'ml-auto' : ''

@@ -15,7 +15,6 @@ export default function TextScramble({ children, className = '' }: TextScrambleP
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
-        // Initialize with random characters
         const randomText = children
             .split('')
             .map(() => CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)])
@@ -24,7 +23,6 @@ export default function TextScramble({ children, className = '' }: TextScrambleP
         setDisplayText(randomText);
         setCurrentIndex(0);
 
-        // Decode animation
         const interval = setInterval(() => {
             setCurrentIndex((prev) => {
                 if (prev >= children.length) {
@@ -34,10 +32,8 @@ export default function TextScramble({ children, className = '' }: TextScrambleP
 
                 setDisplayText((current) => {
                     const chars = current.split('');
-                    // Reveal the real character at current index
                     chars[prev] = children[prev];
 
-                    // Randomize upcoming characters for effect
                     for (let i = prev + 1; i < chars.length; i++) {
                         if (Math.random() > 0.5) {
                             chars[i] = CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)];
@@ -49,7 +45,7 @@ export default function TextScramble({ children, className = '' }: TextScrambleP
 
                 return prev + 1;
             });
-        }, 50); // Speed of reveal (50ms per character)
+        }, 50);
 
         return () => clearInterval(interval);
     }, [children]);

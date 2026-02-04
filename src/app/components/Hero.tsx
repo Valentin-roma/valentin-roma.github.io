@@ -18,7 +18,6 @@ export default function Hero() {
     return (
         <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-12 pt-20 sm:pt-16" id="hero">
             <div className="max-w-5xl w-full">
-                {/* Main Headline */}
                 <h1 className="font-sans text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-none tracking-tight text-white mb-6 sm:mb-8">
                     ARCHITECTE DE
                     <br />
@@ -42,16 +41,12 @@ export default function Hero() {
                     {' '}MÉTIERS
                 </h1>
 
-                {/* Technical Specifications - HUD Style */}
-                {/* Value Proposition - Terminal Style */}
-                {/* Value Proposition - Terminal Style */}
                 <div className="font-mono text-xs sm:text-sm md:text-base text-neutral-400 max-w-2xl space-y-6 sm:space-y-8">
                     <p className="border-l-2 border-green-500 pl-3 sm:pl-4 py-1 leading-relaxed">
                         Je transforme vos processus métier en <span className="text-white font-bold">applications web performantes</span>.
                         Expert en développement de solutions SaaS sur-mesure, scalables et intuitives.
                     </p>
 
-                    {/* CTAs */}
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
                         <a
                             href="#projects"

@@ -51,7 +51,6 @@ export default function VideoDemo({ src }: VideoDemoProps) {
 
     return (
         <div className="w-full h-full bg-black flex flex-col">
-            {/* Video Container */}
             <div className="relative flex-1 bg-black overflow-hidden">
                 <video
                     ref={videoRef}
@@ -60,7 +59,6 @@ export default function VideoDemo({ src }: VideoDemoProps) {
                     onClick={togglePlay}
                 />
 
-                {/* Play/Pause Button Overlay */}
                 {!isPlaying && (
                     <button
                         onClick={togglePlay}
@@ -70,7 +68,6 @@ export default function VideoDemo({ src }: VideoDemoProps) {
                     </button>
                 )}
 
-                {/* Pause Overlay (appears on hover when playing) */}
                 {isPlaying && (
                     <button
                         onClick={togglePlay}
@@ -83,7 +80,6 @@ export default function VideoDemo({ src }: VideoDemoProps) {
                 )}
             </div>
 
-            {/* Progress Bar */}
             <div className="h-1 bg-neutral-800 relative">
                 <div
                     className="h-full bg-white transition-all"
@@ -91,7 +87,6 @@ export default function VideoDemo({ src }: VideoDemoProps) {
                 />
             </div>
 
-            {/* Controls Bar */}
             <div className="h-12 bg-[#0a0a0a] border-t border-neutral-800 px-4 flex items-center justify-between text-xs font-mono">
                 <div className="flex items-center gap-4 text-neutral-400">
                     <button

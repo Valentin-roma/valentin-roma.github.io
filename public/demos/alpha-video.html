@@ -20,36 +20,36 @@
                 id: 1,
                 src: '/assets/vue_ensemble.mp4',
                 title: 'Vue d\'ensemble',
-                description: 'Navigation principale et tableau de bord',
-                duration: '0:15'
+                description: 'Vue globale du tableau de bord',
+                duration: '0:10'
             },
             {
                 id: 2,
                 src: '/assets/groupes.mp4',
                 title: 'Gestion des groupes',
                 description: 'Ajout et modification des groupes',
-                duration: '0:45'
+                duration: '0:17'
             },
             {
                 id: 3,
                 src: '/assets/assiduite.mp4',
                 title: 'Suivi de présence',
                 description: 'Système de pointage et historique',
-                duration: '0:52'
+                duration: '0:20'
             },
             {
                 id: 4,
                 src: '/assets/notes.mp4',
                 title: 'Évaluations',
                 description: 'Création et gestion des évaluations',
-                duration: '0:45'
+                duration: '0:19'
             },
             {
                 id: 5,
                 src: '/assets/login.mp4',
                 title: 'Connexion',
                 description: 'Connexion au système',
-                duration: '1:00'
+                duration: '0:04'
             }
         ];
 
@@ -68,7 +68,7 @@
                 setSelectedVideo(video);
                 setIsPlaying(false);
                 setCurrentTime(0);
-                setSidebarOpen(false); // Ferme la sidebar sur mobile après sélection
+                setSidebarOpen(false);
             };
 
             const togglePlay = () => {
@@ -110,20 +110,17 @@
             return React.createElement('div', {
                 className: 'w-full h-screen bg-black flex relative'
             }, [
-                // Overlay pour fermer la sidebar sur mobile
                 sidebarOpen && React.createElement('div', {
                     key: 'overlay',
                     onClick: () => setSidebarOpen(false),
                     className: 'fixed inset-0 bg-black/50 z-40 md:hidden'
                 }),
 
-                // Sidebar avec liste des vidéos
                 React.createElement('div', {
                     key: 'sidebar',
                     className: 'fixed md:relative w-80 bg-[#0a0a0a] border-r border-neutral-800 flex flex-col h-full z-50 transition-transform duration-300 ' +
                         (sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0')
                 }, [
-                    // Header
                     React.createElement('div', {
                         key: 'header',
                         className: 'p-4 border-b border-neutral-800 flex items-center justify-between'
@@ -140,7 +137,6 @@
                                 className: 'text-xs font-mono text-neutral-500 mt-1'
                             }, videos.length + ' démonstrations')
                         ]),
-                        // Bouton fermer (mobile uniquement)
                         React.createElement('button', {
                             key: 'close',
                             onClick: () => setSidebarOpen(false),
@@ -148,7 +144,6 @@
                         }, '✕')
                     ]),
 
-                    // Liste des vidéos
                     React.createElement('div', {
                         key: 'list',
                         className: 'flex-1 overflow-y-auto'
@@ -184,17 +179,14 @@
                     ))
                 ]),
 
-                // Player principal
                 React.createElement('div', {
                     key: 'player',
                     className: 'flex-1 flex flex-col w-full'
                 }, [
-                    // En-tête du player
                     React.createElement('div', {
                         key: 'player-header',
                         className: 'h-14 md:h-16 bg-[#0a0a0a] border-b border-neutral-800 px-3 md:px-6 flex items-center justify-between gap-3'
                     }, [
-                        // Bouton menu (mobile uniquement)
                         React.createElement('button', {
                             key: 'menu-btn',
                             onClick: () => setSidebarOpen(true),
@@ -227,7 +219,6 @@
                         ])
                     ]),
 
-                    // Zone vidéo
                     React.createElement('div', {
                         key: 'video-container',
                         className: 'flex-1 relative bg-black overflow-hidden'
@@ -240,7 +231,6 @@
                             onClick: togglePlay
                         }),
 
-                        // Play Button
                         !isPlaying && React.createElement('button', {
                             key: 'play-btn',
                             onClick: togglePlay,
@@ -255,7 +245,6 @@
                             d: 'M8 5v14l11-7z'
                         }))),
 
-                        // Pause Overlay
                         isPlaying && React.createElement('button', {
                             key: 'pause-overlay',
                             onClick: togglePlay,
@@ -276,7 +265,6 @@
                         ])))
                     ]),
 
-                    // Progress Bar
                     React.createElement('div', {
                         key: 'progress-bar',
                         className: 'h-1 bg-neutral-800 relative'
@@ -285,7 +273,6 @@
                         style: { width: (duration > 0 ? (currentTime / duration) * 100 : 0) + '%' }
                     })),
 
-                    // Controls Bar
                     React.createElement('div', {
                         key: 'controls',
                         className: 'h-12 bg-[#0a0a0a] border-t border-neutral-800 px-3 md:px-4 flex items-center justify-between text-xs font-mono'
