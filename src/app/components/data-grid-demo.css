@@ -1,0 +1,221 @@
+/* DataGrid Demo - Isolation avec fidélité visuelle totale au dashboard ALPHA */
+
+/* Reset/Isolation wrapper - force light mode */
+.data-grid-demo-wrapper {
+    /* Force light background and text */
+    background: #f6f7fb;
+    color: #0b1020;
+    min-height: 100vh;
+    padding: 24px;
+
+    /* CSS Variables from original Dashboard.css */
+    --color-bg: #f6f7fb;
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-text: #0b1020;
+    --color-text-muted: #6b7280;
+    --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Content Card - exact copy from Dashboard.css */
+.dashboard-content-card-demo {
+    background-color: var(--color-white);
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Card Header - exact copy */
+.dashboard-card-header-demo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.dashboard-header-title-demo h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+    font-family: var(--font-display);
+}
+
+.dashboard-header-title-demo p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Premium Table - exact copy from Dashboard.css lines 783-817 */
+.table-responsive-demo {
+    overflow-x: auto;
+}
+
+.premium-table-demo {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: var(--font-main);
+}
+
+.premium-table-demo th {
+    text-align: left;
+    padding: 1rem 1.5rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    font-weight: 600;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.premium-table-demo td {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+    vertical-align: middle;
+    transition: background-color 0.2s;
+    color: var(--color-text);
+}
+
+.premium-table-demo tr:hover td {
+    background-color: #f9fafb;
+}
+
+.premium-table-demo tr:last-child td {
+    border-bottom: none;
+}
+
+/* Student Cell - exact copy from Dashboard.css */
+.student-cell-demo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.student-avatar-small-demo {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #000;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.student-name-text-demo {
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+/* Group Badge */
+.group-badge-demo {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background-color: #f3f4f6;
+    color: var(--color-text);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Average Display */
+.average-demo {
+    font-weight: 600;
+    color: var(--color-text);
+    font-family: var(--font-display);
+}
+
+/* Actions Cell */
+.actions-cell-demo {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Icon Button - exact copy from Dashboard.css lines 451-473 */
+.icon-btn-demo {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: none;
+    background-color: transparent;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.icon-btn-demo:hover {
+    background-color: #e5e7eb;
+    color: var(--color-text);
+}
+
+.icon-btn-demo.danger-demo:hover {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+/* Premium Input - exact copy from Dashboard.css lines 871-894 */
+.premium-input-demo {
+    width: 80px;
+    padding: 0.6rem 0.75rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: white;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: var(--font-main);
+    transition: all 0.2s;
+    color: var(--color-text);
+}
+
+.premium-input-demo.edit-input-demo {
+    width: 200px;
+    text-align: left;
+}
+
+.premium-input-demo:focus {
+    outline: none;
+    border-color: var(--color-black);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+    transform: scale(1.02);
+}
+
+.premium-input-demo::placeholder {
+    color: #d1d5db;
+    font-weight: 400;
+}
+
+/* Mobile Hide */
+.mobile-hide-demo {
+    display: table-cell;
+}
+
+@media (max-width: 768px) {
+    .mobile-hide-demo {
+        display: none;
+    }
+
+    .dashboard-content-card-demo {
+        padding: 1rem;
+    }
+
+    .premium-table-demo th,
+    .premium-table-demo td {
+        padding: 0.75rem 1rem;
+    }
+}
