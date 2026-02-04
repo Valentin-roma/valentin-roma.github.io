@@ -2,20 +2,32 @@
 
 import LiveFrame from "../../components/LiveFrame";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { AlertTriangle, Check, Monitor, Database, Lock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function InvoiceDemoPage() {
     const [showWarning, setShowWarning] = useState(true);
+    const router = useRouter();
+
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                router.push('/work/invoice');
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [router]);
 
     return (
         <div className="h-screen w-screen bg-black flex flex-col overflow-hidden relative">
             <Link
-                href="/"
-                className="fixed top-6 right-6 z-50 bg-black/80 text-white px-4 py-2 font-mono text-sm border border-neutral-700 hover:bg-neutral-800 transition-colors backdrop-blur-md"
+                href="/work/invoice"
+                className="fixed top-6 right-6 z-50 bg-black/80 text-white px-4 py-2 font-mono text-sm border border-neutral-700 hover:bg-neutral-800 transition-colors backdrop-blur-md flex items-center gap-2"
             >
-                [ESC] RETOUR
+                <span className="text-neutral-500">←</span> [ESC] RETOUR
             </Link>
 
             <AnimatePresence>

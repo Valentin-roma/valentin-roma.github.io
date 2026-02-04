@@ -77,9 +77,12 @@ export default function Header() {
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="hidden md:fixed top-6 left-1/2 md:-translate-x-1/2 w-[90%] max-w-5xl h-14 rounded-xl px-6 md:flex items-center justify-between z-50 bg-black/80 backdrop-blur-xl border border-white/10 overflow-hidden"
                     >
-                        <div className="flex items-center gap-2">
-                            <span className="font-mono text-sm font-bold text-white">VALENTIN_RM</span>
-                            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                        <div className="flex items-center gap-4">
+                            <div className="flex flex-col">
+                                <span className="font-mono text-sm font-bold text-white leading-none">VALENTIN_RM</span>
+                                <span className="font-mono text-[9px] text-neutral-500 uppercase tracking-wider mt-0.5">Full Stack Dev</span>
+                            </div>
+                            <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
                         </div>
 
                         <nav className="flex items-center gap-1">

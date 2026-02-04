@@ -3,12 +3,16 @@
 import { useLayoutEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Project } from '@/app/data/projects';
+import { Project, projects } from '@/app/data/projects';
 
 export default function WorkDetailClient({ project }: { project: Project }) {
     useLayoutEffect(() => {
         window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }, []);
+
+    const currentIndex = projects.findIndex(p => p.slug === project.slug);
+    const nextProject = projects[(currentIndex + 1) % projects.length];
+
     return (
         <div className="min-h-screen bg-black text-white selection:bg-green-500/30 selection:text-green-500 pb-24">
             <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
@@ -129,6 +133,15 @@ export default function WorkDetailClient({ project }: { project: Project }) {
                             <p className="font-mono text-[10px] text-neutral-500 text-center uppercase tracking-tighter">
                                 * Environnement sécurisé (Sandboxed Mode)
                             </p>
+                            <Link
+                                href={`/work/${nextProject.slug}`}
+                                className="group relative block w-full text-white py-4 px-6 text-center transition-all overflow-hidden hover:bg-neutral-800"
+                            >
+                                <span className="relative font-mono font-bold tracking-widest flex items-center justify-center gap-3 z-10 text-xs sm:text-sm">
+                                    {nextProject.id === "002" ? "VOIR_LE_SECOND_PROJET" : "VOIR_LE_PREMIER_PROJET"}
+                                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                                </span>
+                            </Link>
                         </div>
                     </div>
                 </div>
