@@ -114,7 +114,7 @@ body {
 
 /* Smooth scrolling */
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; - Removed to prevent scroll animation on route change */
 }
 
 /* Selection styling */

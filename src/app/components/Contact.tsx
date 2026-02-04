@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Reveal from './ui/Reveal';
 
@@ -9,9 +9,30 @@ export default function Contact() {
     const email = 'valentin.roymamer@icloud.com';
 
     const handleCopyEmail = () => {
-        navigator.clipboard.writeText(email);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+        if (typeof navigator !== 'undefined' && navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(email)
+                .then(() => {
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
+                })
+                .catch(err => {
+                    console.error('Failed to copy text: ', err);
+                });
+        } else {
+            // Fallback for older browsers or insecure contexts
+            try {
+                const textArea = document.createElement("textarea");
+                textArea.value = email;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+            } catch (err) {
+                console.error('Fallback copy failed: ', err);
+            }
+        }
     };
 
     const socialLinks = [
@@ -27,7 +48,7 @@ export default function Contact() {
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
                 <Reveal>
-                    <h2 className="font-sans text-4xl md:text-5xl font-bold tracking-tight text-white mb-3">
+                    <h2 className="font-sans text-4xl md:text-5xl font-bold tracking-tight text-white mb-12">
                         COMMUNICATION
                     </h2>
                 </Reveal>
@@ -57,8 +78,8 @@ export default function Contact() {
                                 whileHover={{ scale: 1.01 }}
                                 whileTap={{ scale: 0.99 }}
                             >
-                                <div className="flex items-center justify-between gap-4 p-6 border border-neutral-800 hover:border-neutral-700 transition-all rounded-lg bg-neutral-950/50">
-                                    <span className={`font-sans text-2xl md:text-4xl font-bold tracking-tight transition-colors ${copied ? 'text-green-500' : 'text-white group-hover:text-neutral-300'
+                                <div className="flex items-center justify-between gap-4 p-4 sm:p-6 border border-neutral-800 hover:border-neutral-700 transition-all rounded-lg bg-neutral-950/50">
+                                    <span className={`font-sans text-sm sm:text-2xl md:text-4xl font-bold tracking-tight transition-colors break-all ${copied ? 'text-green-500' : 'text-white group-hover:text-neutral-300'
                                         }`}>
                                         {copied ? 'ADRESSE COPIÉE' : email}
                                     </span>
@@ -86,34 +107,22 @@ export default function Contact() {
                         {/* Action Grid */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                             {/* Project Inquiry */}
-                            <a
+                            <TerminalButton
                                 href="mailto:valentin.roymamer@icloud.com?subject=Projet%20SaaS%20-%20Demande%20de%20devis"
-                                className="group relative flex flex-col p-6 border border-neutral-800 hover:border-green-500 transition-colors overflow-hidden"
-                            >
-                                <div className="absolute inset-0 bg-green-500/10 scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500"></div>
-                                <div className="relative z-10">
-                                    <h3 className="text-white font-bold mb-2 group-hover:text-green-400 transition-colors">LANCER UN PROJET</h3>
-                                    <p className="text-neutral-400 text-sm mb-6">Vous avez un cahier des charges ou une idée précise ?</p>
-                                    <span className="inline-flex items-center gap-2 text-xs font-mono text-green-500 uppercase tracking-widest">
-                                        DEMANDER UN DEVIS <span className="text-lg">→</span>
-                                    </span>
-                                </div>
-                            </a>
+                                title="LANCER UN PROJET"
+                                description="Vous avez un cahier des charges ou une idée précise ?"
+                                command="DEMANDER UN DEVIS"
+                                theme="green"
+                            />
 
                             {/* General Contact */}
-                            <a
+                            <TerminalButton
                                 href="mailto:valentin.roymamer@icloud.com?subject=Prise%20de%20contact"
-                                className="group relative flex flex-col p-6 border border-neutral-800 hover:border-white transition-colors overflow-hidden"
-                            >
-                                <div className="absolute inset-0 bg-white/5 scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500"></div>
-                                <div className="relative z-10">
-                                    <h3 className="text-white font-bold mb-2">ÉCHANGER</h3>
-                                    <p className="text-neutral-400 text-sm mb-6">Une question technique ou une proposition de collaboration ?</p>
-                                    <span className="inline-flex items-center gap-2 text-xs font-mono text-white uppercase tracking-widest">
-                                        ENVOYER UN MESSAGE <span className="text-lg">→</span>
-                                    </span>
-                                </div>
-                            </a>
+                                title="ÉCHANGER"
+                                description="Une question technique ou une proposition de collaboration ?"
+                                command="ENVOYER UN MESSAGE"
+                                theme="white"
+                            />
                         </div>
 
                         {/* Social Links Footer */}
@@ -137,3 +146,62 @@ export default function Contact() {
         </section>
     );
 }
+
+function TerminalButton({ href, title, description, command, theme = 'green' }: { href: string, title: string, description: string, command: string, theme?: 'green' | 'white' }) {
+    const [isHovered, setIsHovered] = useState(false);
+
+    // Theme colors
+    const activeColor = theme === 'green' ? 'text-green-500' : 'text-white';
+    const borderColor = theme === 'green' ? 'group-hover:border-green-500' : 'group-hover:border-white';
+    const bgColor = theme === 'green' ? 'bg-green-500/10' : 'bg-white/5';
+
+    return (
+        <a
+            href={href}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className={`group relative flex flex-col p-6 border border-neutral-800 ${borderColor} transition-colors overflow-hidden h-full`}
+        >
+            <div className={`absolute inset-0 ${bgColor} scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500`}></div>
+
+            <div className="relative z-10 flex flex-col h-full justify-between">
+                <div>
+                    <h3 className={`text-white font-bold mb-2 group-hover:tracking-wider transition-all duration-300`}>{title}</h3>
+                    <p className="text-neutral-400 text-sm mb-6">{description}</p>
+                </div>
+
+                <div className="font-mono text-xs min-h-[20px] flex items-center">
+                    <span className={`${activeColor}`}>
+                        {isHovered ? (
+                            <Typewriter text={command} />
+                        ) : (
+                            <span className="opacity-50 group-hover:opacity-100 transition-opacity">_</span>
+                        )}
+                    </span>
+                </div>
+            </div>
+        </a>
+    );
+}
+
+const Typewriter = ({ text, speed = 30 }: { text: string, speed?: number }) => {
+    const [displayedText, setDisplayedText] = useState('');
+
+    useEffect(() => {
+        setDisplayedText(''); // Reset on text change or remount
+        let i = 0;
+        const interval = setInterval(() => {
+            if (i < text.length) {
+                setDisplayedText(text.substring(0, i + 1));
+                i++;
+            } else {
+                clearInterval(interval);
+            }
+        }, speed);
+        return () => clearInterval(interval);
+    }, [text, speed]);
+
+    return (
+        <span>{displayedText}<span className="animate-pulse">_</span></span>
+    );
+};

@@ -16,12 +16,12 @@ export const projects: Project[] = [
     {
         id: "001",
         slug: "invoice",
-        title: "LOGICIEL DE FACTURATION",
+        title: "SUITE DE FACTURATION AUTOMATISÉE",
         category: "FINANCIAL SAAS",
         tech: "REACT / FIREBASE",
         status: "PRODUCTION",
         demoLink: "/demos/invoice",
-        challenge: "Un établissement hôtelier perdait plusieurs heures par semaine en gestion administrative manuelle. L'absence de centralisation entraînait des erreurs de TVA, des oublis de taxes de séjour et une visibilité floue sur la trésorerie.",
+        challenge: "Un établissement hôtelier perdait plusieurs heures par semaine en gestion administrative manuelle avec un logiciel obsolète. L'absence de centralisation entraînait des erreurs de TVA, des oublis de taxes de séjour et une visibilité floue sur la trésorerie.",
         solution: "Développement d'une solution sur-mesure de facturation automatisée. Le système gère l'édition de PDF, le calcul complexe des taxes et offre un dashboard analytique en temps réel pour le suivi du chiffre d'affaires.",
         stackDetails: [
             "React (Hooks & Context)",
@@ -29,7 +29,7 @@ export const projects: Project[] = [
             "html2pdf.js (Génération PDF)",
             "Recharts (Data Viz)",
             "Technical CSS Framework",
-            "Vanilla JS Business Logic",
+            "Vanilla JS",
             "Responsive Engine"
         ],
         features: [
@@ -48,7 +48,7 @@ export const projects: Project[] = [
     {
         id: "002",
         slug: "datagrid",
-        title: "GESTION D'ÉLÈVES",
+        title: "PLATEFORME DE GESTION ÉDUCATIVE",
         category: "STUDENT MANAGEMENT",
         tech: "REACT / SUPABASE",
         status: "PRODUCTION",
@@ -68,7 +68,8 @@ export const projects: Project[] = [
             "@react-pdf/renderer",
             "qrcode.react",
             "React Helmet Async",
-            "Cloudflare Turnstile"
+            "Cloudflare Turnstile",
+            "Resend"
         ],
         features: [
             "Site Vitrine & Information (Mission, Formation, Blog, Contact)",

@@ -33,7 +33,7 @@ export default function ProjectGrid() {
                             <div className="corner-marker bottom-0 right-0 border-b border-r"></div>
 
                             {/* Project ID */}
-                            <div className="font-mono text-xs text-neutral-600 mb-4 tracking-tight">
+                            <div className="font-mono text-xs group-hover:text-green-500 text-neutral-600 mb-4 tracking-tight">
                                 PROJECT_{project.id}
                             </div>
 
