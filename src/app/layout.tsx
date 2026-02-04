@@ -20,7 +20,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Valentin Roy Mamer - Architecte de Solutions Métiers",
-  description: "Développeur freelance spécialisé dans les outils métiers. Création de solutions sur-mesure avec Next.js et Supabase.",
+  description: "Développeur freelance spécialisé dans les outils métiers. Création de solutions sur-mesure avec les dernières technologies web.",
 };
 
 export default function RootLayout({
